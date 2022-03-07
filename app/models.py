@@ -12,4 +12,6 @@ class Pitch(db.model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(15000))
     date = (db.Column(timezone=True), default=func.now())
-    
+    user_id = db.column(db.Integer, db.ForeignKey('user.id'))
+
+
