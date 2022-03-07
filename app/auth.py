@@ -18,4 +18,15 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
+        if len(email) < 4:
+            pass
+        elif len(firstName) < 2:
+            pass
+        elif password1 != password2:
+            pass
+        elif len(password1) < 7:
+            pass
+        else:
+            #add user to database
+            pass
     return render_template('sign_up.html')
