@@ -2,7 +2,7 @@ from flask import Blueprint
 
 auth = Blueprint('auth',__name__)
 
-@auth.route('/')
+@auth.route('/login')
 def login():
     return "<p>Login</p>"
 
