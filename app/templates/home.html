@@ -1,5 +1,17 @@
 {% extends "base.html" %}{% block title %} Home {% endblock %}
 
 {% block content %}
-    <h1>This is the home page</h1>
+<h1 align="center">Pitches</h1>
+<ul class="list-group list-group-flush" id="pitches">
+   {% for pitch in uer.pitch %} 
+        <li class="list-group-item">{% pitch.data %}</li>
+   {% endfor %}
+</ul>
+    <form method="POST">
+        <textarea name="pitch" id="pitch" class="form-control"></textarea>
+        <br>
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Add Pitch</button>
+        </div>
+    </form>
 {% endblock %}
