@@ -3,8 +3,13 @@
 {% block content %}
 <h1 align="center">Pitches</h1>
 <ul class="list-group list-group-flush" id="pitches">
-   {% for pitch in uer.pitch %} 
-        <li class="list-group-item">{% pitch.data %}</li>
+   {% for pitch in user.pitches %} 
+        <li class="list-group-item">
+            {% pitch.data %}
+            <button type="button" class="close" onClick="deletePitch({{ pitch.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
    {% endfor %}
 </ul>
     <form method="POST">
