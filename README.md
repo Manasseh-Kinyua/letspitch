@@ -5,7 +5,7 @@
 
 ### Setup/Installation Requirements
 * Open on your preferred web browser
-* Live - 
+* Live - (https://letspitch.herokuapp.com/sign-up)
 * Create an account by signing up
 * Add your pitches
 * Interact with other peoples' pitches
