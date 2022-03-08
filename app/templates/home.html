@@ -6,6 +6,9 @@
       {% for pitch in user.pitches %}
       <li class="list-group-item">
         {{ pitch.data }}
+        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+
         <button type="button" class="close" onClick="deleteNote({{ pitch.id }})">
           <span aria-hidden="true">&times;</span>
         </button>
