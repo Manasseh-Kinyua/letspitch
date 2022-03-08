@@ -1,7 +1,8 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for
 from .models import User
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
+from flask_login import login_user,login_required,logout_user,current_user
 
 auth = Blueprint('auth',__name__)
 
@@ -14,11 +15,13 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Your are logged in Successfully!', category='success')
+                flash('Logged in Successfully!', category='success')
+                login_user(user, remember=True)
+                return redirect(url_for('veiws.home'))
             else:
-                flash('You entered an incorrect email or password', category='error') 
+                flash('Incorrect password, try again', category='error') 
         else:
-            flash('No user with that email', category='error')       
+            flash('Email does not exist', category='error')       
     return render_template('login.html', boolean=True)
 
 @auth.route('/logout')
@@ -33,7 +36,10 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
-        if len(email) < 4:
+        user = User.query.filter_by(email=email).first()
+        if user:
+            flash('User already exists!', category='error')
+        elif len(email) < 4:
             flash('Email must be over four characters.',category='error')
         elif len(first_name) < 2:
             flash('Name must be over 1 character.',category='error')
