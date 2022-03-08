@@ -1,22 +1,22 @@
-{% extends "base.html" %}{% block title %} Home {% endblock %}
 
-{% block content %}
-<h1 align="center">Pitches</h1>
-<ul class="list-group list-group-flush" id="pitches">
-   {% for pitch in user.pitches %} 
-        <li class="list-group-item">
-            {% pitch.data %}
-            <button type="button" class="close" onClick="deletePitch({{ pitch.id }})">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </li>
-   {% endfor %}
-</ul>
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+    %}
+    <h1 align="center">Notes</h1>
+    <ul class="list-group list-group-flush" id="pitches">
+      {% for pitch in user.pitches %}
+      <li class="list-group-item">
+        {{ pitch.data }}
+        <button type="button" class="close" onClick="deleteNote({{ pitch.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
     <form method="POST">
-        <textarea name="pitch" id="pitch" class="form-control"></textarea>
-        <br>
-        <div align="center">
-            <button type="submit" class="btn btn-primary">Add Pitch</button>
-        </div>
+      <textarea name="pitch" id="pitch" class="form-control"></textarea>
+      <br />
+      <div align="center">
+        <button type="submit" class="btn btn-primary">Add Note</button>
+      </div>
     </form>
-{% endblock %}
+    {% endblock %}
